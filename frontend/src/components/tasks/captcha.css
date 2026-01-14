@@ -1,0 +1,11 @@
+/* Captcha Canvas Styling */
+canvas {
+  border-radius: 4px;
+  border: 1px solid hsl(0 0% 93%);
+  background: white;
+  font-family: 'Courier New', monospace;
+}
+
+#reload_href {
+  display: none !important;
+}
