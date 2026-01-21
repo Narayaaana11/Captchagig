@@ -30,7 +30,7 @@ const CLIENT_ORIGIN = process.env.CLIENT_URL || 'https://captchagig-m6dgse5ui-er
 // Initialize Socket.IO
 const io = new Server(httpServer, {
   cors: {
-    origin: CLIENT_ORIGIN,
+    origin: "*",
     methods: ['GET', 'POST'],
     credentials: true
   }
