@@ -134,7 +134,7 @@ export function Wallet() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-black rounded-2xl p-6 text-white shadow-lg border-2 border-gray-800">
             <div className="flex items-center space-x-2 mb-2">
               <WalletIcon className="h-5 w-5" />
               <p className="text-sm font-medium opacity-90">
@@ -149,28 +149,30 @@ export function Wallet() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-white rounded-2xl p-6 border-2 border-black shadow-lg">
             <div className="flex items-center space-x-2 mb-2">
-              <TrendingUp className="h-5 w-5" />
-              <p className="text-sm font-medium opacity-90">Total Earned</p>
+              <TrendingUp className="h-5 w-5 text-black" />
+              <p className="text-sm font-medium text-gray-700">Total Earned</p>
             </div>
-            <p className="text-4xl font-bold mb-1">
+            <p className="text-4xl font-bold mb-1 text-black">
               {profile ? formatCoins(profile.totalEarned) : "0.00"}
             </p>
-            <p className="text-sm opacity-75">
+            <p className="text-sm text-gray-600">
               ≈ {formatINR(coinsToINR(profile?.totalEarned || 0, coinRate))}
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-gray-100 rounded-2xl p-6 border-2 border-gray-300 shadow-lg">
             <div className="flex items-center space-x-2 mb-2">
-              <TrendingDown className="h-5 w-5" />
-              <p className="text-sm font-medium opacity-90">Total Withdrawn</p>
+              <TrendingDown className="h-5 w-5 text-gray-700" />
+              <p className="text-sm font-medium text-gray-700">
+                Total Withdrawn
+              </p>
             </div>
-            <p className="text-4xl font-bold mb-1">
+            <p className="text-4xl font-bold mb-1 text-black">
               {profile ? formatCoins(profile.totalWithdrawn) : "0.00"}
             </p>
-            <p className="text-sm opacity-75">
+            <p className="text-sm text-gray-600">
               ≈ {formatINR(coinsToINR(profile?.totalWithdrawn || 0, coinRate))}
             </p>
           </div>
@@ -264,7 +266,7 @@ export function Wallet() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+                className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
               >
                 {loading ? (
                   <>

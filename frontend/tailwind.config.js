@@ -29,12 +29,12 @@ export default {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
-        // CaptchGig custom colors
+        // CaptchaGig custom colors - Black & White theme
         captch: {
-          purple: '#6B5B95',
-          navy: '#2D1B3D',
-          lavender: '#E8E3F3',
-          blue: '#7B68EE',
+          black: '#000000',
+          white: '#FFFFFF',
+          gray: '#808080',
+          darkgray: '#333333',
         },
       },
       borderRadius: {
@@ -46,8 +46,8 @@ export default {
         sans: ['system-ui', '-apple-system', 'sans-serif'],
       },
       backgroundImage: {
-        'gradient-captch': 'linear-gradient(135deg, #6B5B95 0%, #7B68EE 100%)',
-        'gradient-captch-dark': 'linear-gradient(135deg, #2D1B3D 0%, #6B5B95 100%)',
+        'gradient-captch': 'linear-gradient(135deg, #000000 0%, #333333 100%)',
+        'gradient-captch-dark': 'linear-gradient(135deg, #1A1A1A 0%, #000000 100%)',
       },
     },
   },

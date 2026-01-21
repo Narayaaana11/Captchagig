@@ -46,10 +46,10 @@ export function DailyLoginTask() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-200 hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:shadow-lg transition-shadow">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className="bg-gradient-to-br from-orange-500 to-red-500 p-3 rounded-xl">
+          <div className="bg-black p-3 rounded-xl">
             <Calendar className="h-6 w-6 text-white" />
           </div>
           <div>
@@ -101,7 +101,7 @@ export function DailyLoginTask() {
       <button
         onClick={handleClaim}
         disabled={loading || !canClaim()}
-        className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+        className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
       >
         {loading ? (
           <>

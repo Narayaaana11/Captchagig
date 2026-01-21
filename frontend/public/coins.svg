@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-labelledby="title" role="img">
+  <title>CaptchaGig Coins</title>
+  <defs>
+    <linearGradient id="coinEdge" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFB300"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="coinFace" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFD166"/>
+      <stop offset="1" stop-color="#FFC33B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- shadow -->
+  <ellipse cx="260" cy="460" rx="170" ry="22" fill="#00000022"/>
+
+  <!-- coin 1 (bottom) -->
+  <g transform="translate(60,320)">
+    <ellipse cx="180" cy="60" rx="180" ry="60" fill="url(#coinEdge)"/>
+    <ellipse cx="180" cy="50" rx="160" ry="50" fill="url(#coinFace)"/>
+    <!-- ticks -->
+    <g fill="#9A4A00">
+      <rect x="20" y="20" width="16" height="22" rx="3"/>
+      <rect x="60" y="18" width="16" height="24" rx="3"/>
+      <rect x="100" y="16" width="16" height="26" rx="3"/>
+      <rect x="140" y="15" width="16" height="27" rx="3"/>
+      <rect x="180" y="16" width="16" height="26" rx="3"/>
+      <rect x="220" y="18" width="16" height="24" rx="3"/>
+      <rect x="260" y="20" width="16" height="22" rx="3"/>
+      <rect x="300" y="22" width="16" height="20" rx="3"/>
+    </g>
+  </g>
+
+  <!-- coin 2 (middle) -->
+  <g transform="translate(40,200)">
+    <ellipse cx="200" cy="70" rx="180" ry="60" fill="url(#coinEdge)"/>
+    <ellipse cx="200" cy="60" rx="160" ry="50" fill="url(#coinFace)"/>
+    <!-- ticks -->
+    <g fill="#9A4A00">
+      <rect x="40" y="30" width="16" height="22" rx="3"/>
+      <rect x="80" y="28" width="16" height="24" rx="3"/>
+      <rect x="120" y="26" width="16" height="26" rx="3"/>
+      <rect x="160" y="25" width="16" height="27" rx="3"/>
+      <rect x="200" y="26" width="16" height="26" rx="3"/>
+      <rect x="240" y="28" width="16" height="24" rx="3"/>
+      <rect x="280" y="30" width="16" height="22" rx="3"/>
+      <rect x="320" y="32" width="16" height="20" rx="3"/>
+    </g>
+  </g>
+
+  <!-- coin 3 (top) -->
+  <g transform="translate(20,80)">
+    <ellipse cx="220" cy="80" rx="180" ry="60" fill="url(#coinEdge)"/>
+    <ellipse cx="220" cy="70" rx="160" ry="50" fill="url(#coinFace)"/>
+    <!-- ticks -->
+    <g fill="#9A4A00">
+      <rect x="60" y="40" width="16" height="22" rx="3"/>
+      <rect x="100" y="38" width="16" height="24" rx="3"/>
+      <rect x="140" y="36" width="16" height="26" rx="3"/>
+      <rect x="180" y="35" width="16" height="27" rx="3"/>
+      <rect x="220" y="36" width="16" height="26" rx="3"/>
+      <rect x="260" y="38" width="16" height="24" rx="3"/>
+      <rect x="300" y="40" width="16" height="22" rx="3"/>
+      <rect x="340" y="42" width="16" height="20" rx="3"/>
+    </g>
+  </g>
+</svg>

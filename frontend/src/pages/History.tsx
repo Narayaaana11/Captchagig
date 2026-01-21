@@ -126,7 +126,7 @@ export function History() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-black rounded-2xl p-6 text-white shadow-lg border-2 border-gray-800">
             <div className="flex items-center space-x-2 mb-2">
               <TrendingUp className="h-5 w-5" />
               <p className="text-sm font-medium opacity-90">Total Credited</p>
@@ -135,13 +135,15 @@ export function History() {
             <p className="text-sm opacity-75 mt-1">Successfully earned</p>
           </div>
 
-          <div className="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl p-6 text-white shadow-lg">
+          <div className="bg-gray-100 rounded-2xl p-6 border-2 border-gray-300 shadow-lg">
             <div className="flex items-center space-x-2 mb-2">
-              <TrendingDown className="h-5 w-5" />
-              <p className="text-sm font-medium opacity-90">Pending</p>
+              <TrendingDown className="h-5 w-5 text-gray-700" />
+              <p className="text-sm font-medium text-gray-700">Pending</p>
             </div>
-            <p className="text-4xl font-bold">{formatCoins(totalPending)}</p>
-            <p className="text-sm opacity-75 mt-1">Under review</p>
+            <p className="text-4xl font-bold text-black">
+              {formatCoins(totalPending)}
+            </p>
+            <p className="text-sm text-gray-600 mt-1">Under review</p>
           </div>
         </div>
 

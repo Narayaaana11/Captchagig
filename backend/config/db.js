@@ -6,8 +6,7 @@ const connectDB = async () => {
       dbName: 'captchagig'
     });
 
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-    console.log(`Database: ${conn.connection.name}`);
+    console.log('MongoDB connected');
   } catch (error) {
     console.error(`Error connecting to MongoDB: ${error.message}`);
     process.exit(1);

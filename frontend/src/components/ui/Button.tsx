@@ -1,21 +1,21 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/50 transform hover:scale-105",
+        default:
+          "bg-black text-white hover:shadow-lg hover:shadow-black/50 transform hover:scale-105",
         destructive:
           "bg-red-600 text-white hover:bg-red-700 transform hover:scale-105",
         outline:
-          "border-2 border-purple-200 text-purple-600 hover:bg-purple-50 transition-colors",
-        secondary:
-          "bg-purple-100 text-purple-600 hover:bg-purple-200",
-        ghost: "hover:bg-purple-50 hover:text-purple-600",
-        link: "text-purple-600 underline-offset-4 hover:underline",
+          "border-2 border-gray-300 text-black hover:bg-gray-50 transition-colors",
+        secondary: "bg-gray-200 text-black hover:bg-gray-300",
+        ghost: "hover:bg-gray-100 hover:text-black",
+        link: "text-black underline-offset-4 hover:underline",
       },
       size: {
         default: "h-11 px-6 py-2",
@@ -29,7 +29,7 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -43,7 +43,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       {...props}
     />
   )
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

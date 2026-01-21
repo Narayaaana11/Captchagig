@@ -118,23 +118,23 @@ export function CaptchaTask() {
     <div className="card-modern">
       <div className="flex items-start justify-between mb-6">
         <div className="flex items-center space-x-3">
-          <div className="bg-gradient-to-br from-purple-200 to-blue-200 p-3 rounded-xl">
-            <Shield className="h-6 w-6 text-purple-600" />
+          <div className="bg-black p-3 rounded-xl">
+            <Shield className="h-6 w-6 text-white" />
           </div>
           <div>
             <h3 className="text-xl font-bold text-gray-900">Solve Captcha</h3>
             <p className="text-sm text-gray-600">Earn 2 coins per captcha</p>
           </div>
         </div>
-        <div className="bg-gradient-to-r from-purple-100 to-blue-100 px-4 py-2 rounded-lg border border-purple-200">
-          <span className="text-sm font-bold text-purple-600">
+        <div className="bg-gray-100 px-4 py-2 rounded-lg border border-gray-300">
+          <span className="text-sm font-bold text-black">
             {remaining}/{dailyLimit}
           </span>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200 rounded-xl p-6">
+        <div className="bg-white border-2 border-black rounded-xl p-6">
           <div className="flex items-center justify-between mb-5">
             <p className="text-sm font-semibold text-gray-700">
               Solve the math challenge:
@@ -142,7 +142,7 @@ export function CaptchaTask() {
             <button
               type="button"
               onClick={regenerateCaptcha}
-              className="text-purple-600 hover:text-purple-800 transition-colors transform hover:scale-110 duration-200"
+              className="text-black hover:text-gray-700 transition-colors transform hover:scale-110 duration-200"
               title="Refresh Captcha"
             >
               <RefreshCw className="h-5 w-5" />
@@ -181,7 +181,7 @@ export function CaptchaTask() {
         <button
           type="submit"
           disabled={loading || remaining === 0 || !answer}
-          className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 disabled:hover:scale-100 flex items-center justify-center space-x-2"
+          className="w-full bg-black text-white py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-gray-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 disabled:hover:scale-100 flex items-center justify-center space-x-2"
         >
           {loading ? (
             <>

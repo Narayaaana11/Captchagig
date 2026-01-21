@@ -1,16 +1,25 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import { Landing } from './pages/Landing';
-import { Auth } from './pages/Auth';
-import { Dashboard } from './pages/Dashboard';
-import { Wallet } from './pages/Wallet';
-import { History } from './pages/History';
-import { AdminPanel } from './pages/AdminPanel';
-import { AdminTasks } from './pages/AdminTasks';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { WebSocketProvider, useJoinRoom } from "./contexts/WebSocketContext";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { Landing } from "./pages/Landing";
+import { Auth } from "./pages/Auth";
+import { Dashboard } from "./pages/Dashboard";
+import { Wallet } from "./pages/Wallet";
+import { History } from "./pages/History";
+import { AdminPanel } from "./pages/AdminPanel";
+import { AdminTasks } from "./pages/AdminTasks";
 
 function AppRoutes() {
   const { profile, loading } = useAuth();
+
+  // Join appropriate WebSocket room when a profile is present
+  useJoinRoom(profile?.id, (profile as any)?.isAdmin);
 
   if (loading) {
     return (
@@ -22,25 +31,33 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route 
-        path="/" 
+      <Route
+        path="/"
         element={
           profile ? (
-            (profile as any).isAdmin ? <Navigate to="/admin" replace /> : <Navigate to="/dashboard" replace />
+            (profile as any).isAdmin ? (
+              <Navigate to="/admin" replace />
+            ) : (
+              <Navigate to="/dashboard" replace />
+            )
           ) : (
             <Landing />
           )
-        } 
+        }
       />
-      <Route 
-        path="/auth" 
+      <Route
+        path="/auth"
         element={
           profile ? (
-            (profile as any).isAdmin ? <Navigate to="/admin" replace /> : <Navigate to="/dashboard" replace />
+            (profile as any).isAdmin ? (
+              <Navigate to="/admin" replace />
+            ) : (
+              <Navigate to="/dashboard" replace />
+            )
           ) : (
             <Auth />
           )
-        } 
+        }
       />
       <Route
         path="/dashboard"
@@ -91,7 +108,9 @@ function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthProvider>
-        <AppRoutes />
+        <WebSocketProvider>
+          <AppRoutes />
+        </WebSocketProvider>
       </AuthProvider>
     </Router>
   );

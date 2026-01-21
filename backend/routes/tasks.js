@@ -4,7 +4,7 @@ import Task from '../models/Task.js';
 import Submission from '../models/Submission.js';
 import User from '../models/User.js';
 import Transaction from '../models/Transaction.js';
-import { protect, authorize, checkVerification } from '../middleware/auth.js';
+import { protect, authorize } from '../middleware/auth.js';
 import { validate } from '../middleware/error.js';
 
 const router = express.Router();
@@ -137,7 +137,7 @@ router.get('/configs', protect, async (req, res) => {
 // @route   GET /api/tasks/captcha-challenge
 // @desc    Issue a server-validated captcha challenge
 // @access  Private
-router.get('/captcha-challenge', protect, checkVerification, async (req, res) => {
+router.get('/captcha-challenge', protect, async (req, res) => {
   try {
     const challenge = createMathChallenge();
     res.json({ success: true, ...challenge, ttl: CHALLENGE_TTL_MS });
@@ -153,7 +153,7 @@ router.get('/captcha-challenge', protect, checkVerification, async (req, res) =>
 // @route   POST /api/tasks/complete-captcha
 // @desc    Validate captcha and award coins
 // @access  Private (Worker)
-router.post('/complete-captcha', protect, checkVerification, async (req, res) => {
+router.post('/complete-captcha', protect, async (req, res) => {
   try {
     const { challengeId, answer } = req.body;
 
@@ -215,7 +215,7 @@ router.post('/complete-captcha', protect, checkVerification, async (req, res) =>
 // @route   POST /api/tasks/complete-daily-login
 // @desc    Daily login reward with streaks
 // @access  Private (Worker)
-router.post('/complete-daily-login', protect, checkVerification, async (req, res) => {
+router.post('/complete-daily-login', protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
     const { start, end } = getTodayRange();
@@ -271,7 +271,7 @@ router.post('/complete-daily-login', protect, checkVerification, async (req, res
 // @route   POST /api/tasks/complete-spin-wheel
 // @desc    Spin wheel reward with daily limit
 // @access  Private (Worker)
-router.post('/complete-spin-wheel', protect, checkVerification, async (req, res) => {
+router.post('/complete-spin-wheel', protect, async (req, res) => {
   try {
     const { start, end } = getTodayRange();
     const spinsToday = await Transaction.countDocuments({
@@ -353,7 +353,6 @@ router.post(
   '/',
   protect,
   authorize('creator', 'admin'),
-  checkVerification,
   [
     body('title').trim().notEmpty().withMessage('Title is required'),
     body('description').trim().notEmpty().withMessage('Description is required'),

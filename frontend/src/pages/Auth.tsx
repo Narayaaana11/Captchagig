@@ -1,54 +1,59 @@
-import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Coins, Loader2, Mail, Lock, User } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Loader2, Mail, Lock, User } from "lucide-react";
+import { useAuth } from "../contexts/AuthContext";
 
 export function Auth() {
   const [searchParams] = useSearchParams();
-  const referralCode = searchParams.get('ref');
+  const referralCode = searchParams.get("ref");
 
-  const [mode, setMode] = useState<'login' | 'register'>('login');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [mode, setMode] = useState<"login" | "register">("login");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const { register, login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Basic validation
-    if (mode === 'register') {
+    if (mode === "register") {
       if (!name.trim()) {
-        setError('Please enter your name');
+        setError("Please enter your name");
         return;
       }
     }
-    if (!email.trim() || !email.includes('@')) {
-      setError('Please enter a valid email');
+    if (!email.trim() || !email.includes("@")) {
+      setError("Please enter a valid email");
       return;
     }
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       return;
     }
 
     setLoading(true);
     try {
-      if (mode === 'register') {
-        const { error } = await register(name.trim(), email.trim(), password, referralCode);
+      if (mode === "register") {
+        const { error } = await register(
+          name.trim(),
+          email.trim(),
+          password,
+          referralCode
+        );
         if (error) throw error;
       } else {
         const { error } = await login(email.trim(), password);
         if (error) throw error;
       }
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (err) {
-      setError('Authentication failed. Please try again.');
+      setError("Authentication failed. Please try again.");
       console.error(err);
     } finally {
       setLoading(false);
@@ -56,22 +61,22 @@ export function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-2 mb-4">
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-3 rounded-xl">
-              <Coins className="h-8 w-8 text-white" />
+            <div className="bg-black p-3 rounded-xl">
+              <img src="/coins.svg" alt="CaptchaGig" className="h-8 w-8" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-              CaptchGig
-            </span>
+            <span className="text-2xl font-bold text-black">CaptchaGig</span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {mode === 'login' ? 'Welcome Back' : 'Create your account'}
+            {mode === "login" ? "Welcome Back" : "Create your account"}
           </h1>
           <p className="text-gray-600">
-            {mode === 'login' ? 'Login with your email and password' : 'Sign up with name, email and password'}
+            {mode === "login"
+              ? "Login with your email and password"
+              : "Sign up with name, email and password"}
           </p>
         </div>
 
@@ -80,15 +85,20 @@ export function Auth() {
             <p className="text-sm text-green-800 font-medium">
               You've been referred! Get 20 bonus coins on signup.
             </p>
-            <p className="text-xs text-green-600 mt-1">Referral Code: {referralCode}</p>
+            <p className="text-xs text-green-600 mt-1">
+              Referral Code: {referralCode}
+            </p>
           </div>
         )}
 
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {mode === 'register' && (
+            {mode === "register" && (
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Full Name
                 </label>
                 <div className="relative">
@@ -109,7 +119,10 @@ export function Auth() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email
               </label>
               <div className="relative">
@@ -129,7 +142,10 @@ export function Auth() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Password
               </label>
               <div className="relative">
@@ -147,7 +163,9 @@ export function Auth() {
                 />
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                {mode === 'register' ? 'Use at least 6 characters' : 'Enter your account password'}
+                {mode === "register"
+                  ? "Use at least 6 characters"
+                  : "Enter your account password"}
               </p>
             </div>
 
@@ -160,28 +178,32 @@ export function Auth() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+              className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
             >
               {loading ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
-                  <span>{mode === 'login' ? 'Logging in...' : 'Creating account...'}</span>
+                  <span>
+                    {mode === "login" ? "Logging in..." : "Creating account..."}
+                  </span>
                 </>
               ) : (
-                <span>{mode === 'login' ? 'Login' : 'Sign Up'}</span>
+                <span>{mode === "login" ? "Login" : "Sign Up"}</span>
               )}
             </button>
 
             <button
               type="button"
               onClick={() => {
-                setMode(mode === 'login' ? 'register' : 'login');
-                setError('');
+                setMode(mode === "login" ? "register" : "login");
+                setError("");
               }}
               disabled={loading}
               className="w-full text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors"
             >
-              {mode === 'login' ? 'New here? Create an account' : 'Already have an account? Login'}
+              {mode === "login"
+                ? "New here? Create an account"
+                : "Already have an account? Login"}
             </button>
           </form>
         </div>

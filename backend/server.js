@@ -70,6 +70,41 @@ io.on('connection', (socket) => {
     console.log(`Admin ${userId} joined admin room`);
   });
 
+  // Handle real-time events
+  socket.on('taskStarted', (data) => {
+    io.to(`user:${data.userId}`).emit('taskUpdate', {
+      type: 'started',
+      taskId: data.taskId,
+      timestamp: new Date()
+    });
+  });
+
+  socket.on('submissionCreated', (data) => {
+    io.to(`user:${data.userId}`).emit('submissionUpdate', {
+      type: 'created',
+      submissionId: data.submissionId,
+      status: data.status,
+      timestamp: new Date()
+    });
+  });
+
+  socket.on('leaderboardUpdated', (data) => {
+    io.emit('leaderboardUpdate', {
+      type: 'updated',
+      data: data,
+      timestamp: new Date()
+    });
+  });
+
+  socket.on('walletUpdated', (data) => {
+    io.to(`user:${data.userId}`).emit('walletUpdate', {
+      type: 'updated',
+      balance: data.balance,
+      transaction: data.transaction,
+      timestamp: new Date()
+    });
+  });
+
   socket.on('disconnect', () => {
     console.log(`User disconnected: ${socket.id}`);
   });

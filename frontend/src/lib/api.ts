@@ -88,6 +88,9 @@ export interface User {
   referredBy?: string;
   isActive: boolean;
   createdAt?: string;
+  lastLogin?: string;
+  lastDailyTaskAt?: string;
+  streakCount?: number;
 }
 
 export interface AuthResponse {

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Users, Copy, Check, Share2 } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useState } from "react";
+import { Users, Copy, Check, Share2 } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
 
 export function ReferralTask() {
   const { profile } = useAuth();
@@ -13,7 +13,7 @@ export function ReferralTask() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error("Failed to copy:", err);
     }
   };
 
@@ -21,12 +21,12 @@ export function ReferralTask() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Join CaptchGig',
+          title: "Join CaptchGig",
           text: `Join me on CaptchGig and earn real money! Use my referral code: ${profile?.referralCode}`,
           url: referralLink,
         });
       } catch (err) {
-        console.error('Share failed:', err);
+        console.error("Share failed:", err);
       }
     } else {
       handleCopy();
@@ -34,10 +34,10 @@ export function ReferralTask() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200 hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:shadow-lg transition-shadow">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className="bg-gradient-to-br from-green-500 to-emerald-500 p-3 rounded-xl">
+          <div className="bg-black p-3 rounded-xl">
             <Users className="h-6 w-6 text-white" />
           </div>
           <div>
@@ -59,14 +59,22 @@ export function ReferralTask() {
       </div>
 
       <div className="bg-white rounded-xl p-4 border-2 border-green-200 mb-4">
-        <p className="text-xs font-medium text-gray-700 mb-2">Your Referral Code</p>
+        <p className="text-xs font-medium text-gray-700 mb-2">
+          Your Referral Code
+        </p>
         <div className="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
-          <code className="text-lg font-bold text-gray-900">{profile?.referralCode}</code>
+          <code className="text-lg font-bold text-gray-900">
+            {profile?.referralCode}
+          </code>
           <button
             onClick={handleCopy}
             className="text-green-600 hover:text-green-700 transition-colors"
           >
-            {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
+            {copied ? (
+              <Check className="h-5 w-5" />
+            ) : (
+              <Copy className="h-5 w-5" />
+            )}
           </button>
         </div>
       </div>
@@ -91,7 +99,7 @@ export function ReferralTask() {
 
         <button
           onClick={handleShare}
-          className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2"
+          className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2"
         >
           <Share2 className="h-5 w-5" />
           <span>Share Now</span>

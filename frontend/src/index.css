@@ -1,39 +1,39 @@
 :root {
 	--radius: 0.75rem;
-	--background: 250 100% 98%;
-	--foreground: 250 10% 12%;
-	--primary: 260 95% 60%;
+	--background: 0 0% 100%;
+	--foreground: 0 0% 0%;
+	--primary: 0 0% 0%;
 	--primary-foreground: 0 0% 100%;
-	--secondary: 250 100% 95%;
-	--secondary-foreground: 260 10% 20%;
+	--secondary: 0 0% 95%;
+	--secondary-foreground: 0 0% 10%;
 	--destructive: 0 84.2% 60.2%;
 	--destructive-foreground: 0 0% 100%;
-	--muted: 250 20% 90%;
-	--muted-foreground: 250 10% 45%;
-	--accent: 270 100% 62%;
+	--muted: 0 0% 90%;
+	--muted-foreground: 0 0% 45%;
+	--accent: 0 0% 20%;
 	--accent-foreground: 0 0% 100%;
-	--border: 250 20% 92%;
-	--input: 250 100% 97%;
-	--ring: 260 95% 60%;
+	--border: 0 0% 92%;
+	--input: 0 0% 98%;
+	--ring: 0 0% 0%;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: 250 100% 98%;
-		--foreground: 250 10% 12%;
-		--primary: 260 95% 60%;
-		--primary-foreground: 0 0% 100%;
-		--secondary: 250 100% 95%;
-		--secondary-foreground: 260 10% 20%;
+		--background: 0 0% 8%;
+		--foreground: 0 0% 95%;
+		--primary: 0 0% 95%;
+		--primary-foreground: 0 0% 8%;
+		--secondary: 0 0% 20%;
+		--secondary-foreground: 0 0% 95%;
 		--destructive: 0 84.2% 60.2%;
 		--destructive-foreground: 0 0% 100%;
-		--muted: 250 20% 90%;
-		--muted-foreground: 250 10% 45%;
-		--accent: 270 100% 62%;
-		--accent-foreground: 0 0% 100%;
-		--border: 250 20% 92%;
-		--input: 250 100% 97%;
-		--ring: 260 95% 60%;
+		--muted: 0 0% 30%;
+		--muted-foreground: 0 0% 70%;
+		--accent: 0 0% 95%;
+		--accent-foreground: 0 0% 8%;
+		--border: 0 0% 20%;
+		--input: 0 0% 15%;
+		--ring: 0 0% 95%;
 	}
 }
 
@@ -44,7 +44,7 @@
 body {
 	@apply bg-background text-foreground font-sans;
 	letter-spacing: 0.3px;
-	background: linear-gradient(135deg, hsl(250, 100%, 98%) 0%, hsl(270, 100%, 96%) 100%);
+	background: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 95%) 100%);
 }
 
 @tailwind base;
@@ -54,34 +54,34 @@ body {
 /* Modern button styles */
 @layer components {
 	.btn-primary {
-		@apply px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:shadow-lg hover:shadow-purple-500/50 transform hover:scale-105;
+		@apply px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 bg-black text-white hover:shadow-lg hover:shadow-black/50 transform hover:scale-105;
 	}
 
 	.btn-secondary {
-		@apply px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 border border-purple-200 text-purple-600 hover:bg-purple-50;
+		@apply px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 border border-gray-300 text-black hover:bg-gray-50;
 	}
 
 	.btn-dark {
-		@apply px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 bg-slate-900 text-white hover:bg-slate-800;
+		@apply px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 bg-black text-white hover:bg-gray-900;
 	}
 
 	/* Modern card styles */
 	.card-modern {
-		@apply bg-white rounded-2xl p-8 transition-all duration-300 border border-purple-100 hover:shadow-2xl hover:shadow-purple-200/50;
+		@apply bg-white rounded-2xl p-8 transition-all duration-300 border border-gray-200 hover:shadow-2xl hover:shadow-black/10;
 	}
 
 	.card-gradient {
-		@apply bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 transition-all duration-300 border border-purple-100 hover:shadow-2xl;
+		@apply bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 transition-all duration-300 border border-gray-200 hover:shadow-2xl;
 	}
 
 	.feature-card {
-		@apply bg-white rounded-xl p-6 border border-purple-100 hover:shadow-xl transition-all duration-300;
+		@apply bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl transition-all duration-300;
 	}
 }
 
 /* Remove default focus styles and add modern ones */
 :focus-visible {
-	@apply outline-none ring-2 ring-offset-2 ring-purple-500;
+	@apply outline-none ring-2 ring-offset-2 ring-black;
 }
 
 input, textarea, select {
