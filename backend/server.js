@@ -25,7 +25,7 @@ const app = express();
 const httpServer = createServer(app);
 
 // Resolve client origin from environment
-const CLIENT_ORIGIN = process.env.CLIENT_URL || 'http://localhost:5173';
+const CLIENT_ORIGIN = process.env.CLIENT_URL || 'https://captchagig-m6dgse5ui-erens-projects-bfd14c7f.vercel.app/';
 
 // Initialize Socket.IO
 const io = new Server(httpServer, {
